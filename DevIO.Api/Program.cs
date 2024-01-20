@@ -30,10 +30,11 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Development",
-        builder => builder.AllowAnyOrigin()
+        builder => builder
+        .AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader()
-        .AllowCredentials());
+        );
 });
 
 builder.Services.ResolveDependencies();
