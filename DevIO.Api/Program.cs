@@ -22,9 +22,20 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.Configure<ApiBehaviorOptions>(options => {
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
     options.SuppressModelStateInvalidFilter = true; //desabilita as formas de validações autómaticas das viewmodels 
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Development",
+        builder => builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
 builder.Services.ResolveDependencies();
 
 var app = builder.Build();
@@ -35,6 +46,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("Development");
 
 app.UseHttpsRedirection();
 
