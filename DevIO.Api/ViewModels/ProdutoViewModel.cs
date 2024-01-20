@@ -16,8 +16,8 @@ namespace DevIO.Api.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(200, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracters", MinimumLength = 2)]
         public string Descricao { get; set; }
-        public string ImagemUpload { get; set; }
-        public string Imagem { get; set; }
+        public string ImagemUpload { get; set; } //Dados da imagem em base64
+        public string Imagem { get; set; } //Nome Imagem
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public decimal Valor { get; set; }

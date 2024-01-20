@@ -24,6 +24,7 @@ namespace DevIO.Api.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterProdutosFornecedores());
@@ -37,16 +38,23 @@ namespace DevIO.Api.Controllers
 
             return produtoViewModel;
         }
-
+        [HttpPost]
         public async Task<ActionResult<ProdutoViewModel>> Adicionar(ProdutoViewModel produtoViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
+            var imagemNome = Guid.NewGuid() + "_" + produtoViewModel.Imagem;
+            if (!UploadArquivo(produtoViewModel.ImagemUpload, imagemNome))
+            {
+                return CustomResponse(produtoViewModel);
+            }
+            produtoViewModel.Imagem = imagemNome;
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
             return CustomResponse(produtoViewModel);
         }
 
+        [HttpDelete]
         public async Task<ActionResult<ProdutoViewModel>> Excluir(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
@@ -78,7 +86,7 @@ namespace DevIO.Api.Controllers
             }
 
             System.IO.File.WriteAllBytes(filePath, imageDataByteArray);
-            
+
             return true;
         }
     }
