@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
 using AutoMapper;
 using DevIO.Api.ViewModels;
 using DevIO.Business.Intefaces;
+using DevIO.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.Api.Controllers
@@ -36,6 +38,15 @@ namespace DevIO.Api.Controllers
             return produtoViewModel;
         }
 
+        public async Task<ActionResult<ProdutoViewModel>> Adicionar(ProdutoViewModel produtoViewModel)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
+
+            return CustomResponse(produtoViewModel);
+        }
+
         public async Task<ActionResult<ProdutoViewModel>> Excluir(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
@@ -48,5 +59,27 @@ namespace DevIO.Api.Controllers
         }
 
         private async Task<ProdutoViewModel> ObterProduto(Guid id) => _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedor(id));
+
+        private bool UploadArquivo(string arquivo, string imgNome)
+        {
+            var imageDataByteArray = Convert.FromBase64String(arquivo);
+            if (string.IsNullOrEmpty(arquivo))
+            {
+                NotificarErro("Forneca uma imagem para este produto!");
+                return false;
+            }
+
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens", imgNome);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                NotificarErro("Já existe um arquivo com esse nome!");
+                return false;
+            }
+
+            System.IO.File.WriteAllBytes(filePath, imageDataByteArray);
+            
+            return true;
+        }
     }
 }
