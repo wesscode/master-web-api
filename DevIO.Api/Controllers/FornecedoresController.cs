@@ -2,10 +2,12 @@ using AutoMapper;
 using DevIO.Api.ViewModels;
 using DevIO.Business.Intefaces;
 using DevIO.Business.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class FornecedoresController : MainController
     {
@@ -15,10 +17,10 @@ namespace DevIO.Api.Controllers
         private readonly IMapper _mapper;
 
         public FornecedoresController(IFornecedorRepository fornecedorRepository,
-         IFornecedorService fornecedorService,
-         IEnderecoRepository enderecoRepository,
-          IMapper mapper,
-          INotificador notificador) : base(notificador)
+                                      IFornecedorService fornecedorService,
+                                      IEnderecoRepository enderecoRepository,
+                                      IMapper mapper,
+                                      INotificador notificador) : base(notificador)
         {
             _fornecedorRepository = fornecedorRepository;
             _fornecedorService = fornecedorService;
