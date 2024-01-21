@@ -1,4 +1,5 @@
 using DevIO.Api.Data;
+using DevIO.Api.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ namespace DevIO.Api.Configuration
             services.AddDefaultIdentity<IdentityUser>() //classe de user que pode ser customizavel
             .AddRoles<IdentityRole>() //habilita uso de Roles com a classe pra roles
             .AddEntityFrameworkStores<ApplicationDbContext>() //indica o contexto
+            .AddErrorDescriber<IdentityMensagensPortugues>()
             .AddDefaultTokenProviders(); //habilita uso de token para recuperação de emails.
 
             return services;
