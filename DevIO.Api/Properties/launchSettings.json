@@ -30,6 +30,30 @@
       "workingDirectory": "/home/wesley/app/master-web-api",
       "executablePath": "dotnet",
       "commandLineArgs": "/home/wesley/app/master-web-api/DevIO.Api/bin/Debug/net6.0/DevIO.Api.dll"
+    },
+    "IIS - Dev": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "distributionName": "Ubuntu",
+      "workingDirectory": "/home/wesley/app/master-web-api",
+      "executablePath": "dotnet",
+      "commandLineArgs": "/home/wesley/app/master-web-api/DevIO.Api/bin/Debug/net6.0/DevIO.Api.dll"
+    },
+    "IIS - Prod": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "distributionName": "Ubuntu",
+      "workingDirectory": "/home/wesley/app/master-web-api",
+      "executablePath": "dotnet",
+      "commandLineArgs": "/home/wesley/app/master-web-api/DevIO.Api/bin/Debug/net6.0/DevIO.Api.dll"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
