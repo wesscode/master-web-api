@@ -38,7 +38,7 @@ namespace DevIO.Api.Configuration
             }
 
             app.UseCors("Development");
-            //app.UseHttpsRedirection(); //redireciona para https
+            app.UseHttpsRedirection(); //redireciona para https
             app.UseAuthentication();
             app.UseAuthorization();
 
