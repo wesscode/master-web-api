@@ -5,6 +5,6 @@
 - REST
 - AspNetIdentity com EFCore, JWT, Autorização, Autenticação e Exceptions.
 - FluentApi
-- Cors
+- Cors é a permissão que outras aplicações falam comigo.
 - Versionamento
 

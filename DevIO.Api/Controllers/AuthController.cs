@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DevIO.Api.Controllers
 {
+    //[DisableCors] //desabilito o cors definido.
     [Route("api")]
     public class AuthController : MainController
     {
@@ -27,6 +28,7 @@ namespace DevIO.Api.Controllers
             _appSettings = appSettings.Value;
         }
 
+        //[EnableCors("Development")] //nn funciona quando temos uma politica de cors globalmente.
         [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(RegisterUserViewModel registerUser)
         {
@@ -108,7 +110,7 @@ namespace DevIO.Api.Controllers
             });
 
             var encodedToken = tokenHandler.WriteToken(token);
-            
+
             var response = new LoginResponseViewModel
             {
                 AccessToken = encodedToken,
