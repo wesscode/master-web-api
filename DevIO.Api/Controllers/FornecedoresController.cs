@@ -30,6 +30,7 @@ namespace DevIO.Api.Controllers
 
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<FornecedorViewModel>> ObterTodos()
         {

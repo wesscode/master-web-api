@@ -32,11 +32,13 @@ namespace DevIO.Api.Configuration
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            else
+            {
+                app.UseHsts(); //informa ao browser que a aplicação so aceita Https
+            }
 
             app.UseCors("Development");
-
-            app.UseHttpsRedirection();
-
+            //app.UseHttpsRedirection(); //redireciona para https
             app.UseAuthentication();
             app.UseAuthorization();
 
