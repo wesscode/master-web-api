@@ -1,4 +1,5 @@
 using AutoMapper;
+using DevIO.Api.Controllers;
 using DevIO.Api.Extensions;
 using DevIO.Api.ViewModels;
 using DevIO.Business.Intefaces;

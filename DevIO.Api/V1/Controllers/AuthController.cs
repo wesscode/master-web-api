@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using DevIO.Api.Controllers;
 using DevIO.Api.Extensions;
 using DevIO.Api.ViewModels.UserRegisterViewModel;
 using DevIO.Business.Intefaces;
@@ -12,8 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace DevIO.Api.V1.Controllers
 {
     //[DisableCors] //desabilito o cors definido.
-    [ApiVersion("2.0")]
-    [ApiVersion("1.0", Deprecated = true)]
+    [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}")]
     public class AuthController : MainController
     {
