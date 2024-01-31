@@ -12,7 +12,9 @@ using Microsoft.IdentityModel.Tokens;
 namespace DevIO.Api.Controllers
 {
     //[DisableCors] //desabilito o cors definido.
-    [Route("api")]
+    [ApiVersion("2.0")]
+    [ApiVersion("1.0", Deprecated = true)]
+    [Route("api/v{version:apiVersion}")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
