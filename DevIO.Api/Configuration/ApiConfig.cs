@@ -6,6 +6,8 @@ namespace DevIO.Api.Configuration
     {
         public static IServiceCollection AddApiConfig(this IServiceCollection services)
         {
+            services.AddControllers();
+
             services.AddApiVersioning(options =>
             {
                 options.AssumeDefaultVersionWhenUnspecified = true;
