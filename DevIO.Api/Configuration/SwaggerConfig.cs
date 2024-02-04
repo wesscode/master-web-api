@@ -47,7 +47,8 @@ namespace DevIO.Api.Configuration
 
         public static IApplicationBuilder UseSwaggerConfig(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            //app.UseMiddleware<SwaggerAuthorizedMiddleware>();
+            //middleware que bloqueia o swagger usuário que nn está autenticado
+            // app.UseMiddleware<SwaggerAuthorizedMiddleware>(); 
             app.UseSwagger();
             app.UseSwaggerUI(
                 options =>
@@ -144,6 +145,8 @@ namespace DevIO.Api.Configuration
             _next = next;
         }
 
+        //middleware que válida se o usuário está autenticado para acesso o swagger.
+        //se nn estiver posso fazer um fluxo de autenticação como retornar uma view para autenticar, para so ai liberar a documentação swagger pra ele.
         public async Task Invoke(HttpContext context)
         {
             if (context.Request.Path.StartsWithSegments("/swagger")
