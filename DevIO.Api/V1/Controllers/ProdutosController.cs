@@ -133,7 +133,7 @@ namespace DevIO.Api.V1.Controllers
 
 
         #region Upload arquivo alternativo
-        [HttpPost("Adicionar")]
+        [HttpPost("adicionar")]
         public async Task<ActionResult<ProdutoViewModel>> AdicionarAlternativo(
             // Binder personalizado para envio de IFormFile e ViewModel dentro de um FormData compatível com .NET Core 3.1 ou superior (system.text.json)
             [ModelBinder(BinderType = typeof(ProdutoModelBinder))]

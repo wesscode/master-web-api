@@ -95,7 +95,7 @@ namespace DevIO.Api.V1.Controllers
             return CustomResponse();
         }
 
-        [HttpGet("obter-endereco/{id:guid}")]
+        [HttpGet("endereco/{id:guid}")]
         public async Task<EnderecoViewModel> ObterEnderecoPorId(Guid id)
         {
             var enderecoViewModel = _mapper.Map<EnderecoViewModel>(await _enderecoRepository.ObterPorId(id));
@@ -103,7 +103,7 @@ namespace DevIO.Api.V1.Controllers
         }
 
         [ClaimsAuthorize("Fornecedor", "Atualizar")]
-        [HttpPut("atualizar-endereco/{id:guid}")]
+        [HttpPut("endereco/{id:guid}")]
         public async Task<ActionResult<EnderecoViewModel>> AtualizarEndereco(Guid id, EnderecoViewModel enderecoViewModel)
         {
             if (id != enderecoViewModel.Id)
