@@ -8,7 +8,7 @@ namespace DevIO.Api.V2.Controllers
     [Route("api/v{version:apiVersion}/teste")]
     public class TesteController : MainController
     {
-        public TesteController(INotificador notificador) : base(notificador) { }
+        public TesteController(INotificador notificador, IUser appUser) : base(notificador, appUser) { }
 
         [HttpGet]
         public string Valor()
