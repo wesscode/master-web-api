@@ -10,7 +10,7 @@
 - Documentação swagger
 - Observabilidade
     - ILogger
-    - Elmah.io
+    - Elmah.io / KissLog.net
     - HeathChecks
     - Application Insights(azure)
 

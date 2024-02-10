@@ -2,7 +2,6 @@ using DevIO.Business.Intefaces;
 using DevIO.Business.Notificacoes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DevIO.Api.Controllers
 {

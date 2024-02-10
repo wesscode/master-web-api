@@ -20,15 +20,18 @@ namespace DevIO.Api.V1.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
+        private readonly ILogger _logger;
         public AuthController(INotificador notificador,
                               SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings,
-                              IUser appUser) : base(notificador, appUser)
+                              IUser appUser,
+                              ILogger<AuthController> logger) : base(notificador, appUser)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value;
+            _logger = logger;
         }
 
         //[EnableCors("Development")] //nn funciona quando temos uma politica de cors globalmente.
@@ -68,6 +71,7 @@ namespace DevIO.Api.V1.Controllers
 
             if (result.Succeeded)
             {
+                _logger.LogInformation($"Usuário {loginUser.Email} logado com sucesso.");
                 return CustomResponse(await GerarJwt(loginUser.Email));
             }
 
