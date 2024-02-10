@@ -11,5 +11,6 @@
 - Observabilidade
     - ILogger
     - Elmah.io
-    - HeakthChecks
+    - HeathChecks
+    - Application Insights(azure)
 
