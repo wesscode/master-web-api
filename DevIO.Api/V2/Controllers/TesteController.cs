@@ -20,8 +20,18 @@ namespace DevIO.Api.V2.Controllers
         [HttpGet]
         public string Valor()
         {
-            /*Perfis de logs por niveis*/
-            
+            // try 
+            // {
+            //     var i = 0;
+            //     var result = 42 / i;
+            // }
+            // catch(DivideByZeroException e)
+            // {
+            //     e.Ship(HttpContext); //Ship: metodo de extensão do Elmah, para enviar log para o servidor do Elmah.
+            // } 
+
+
+            /*Perfis de logs por niveis*/            
             _logger.LogTrace("Log de Trace"); //desabilitado por default
             _logger.LogDebug("Log de Debug");
             _logger.LogInformation("Log de Information");

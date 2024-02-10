@@ -1,3 +1,4 @@
+using DevIO.Api.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIO.Api.Configuration
@@ -59,7 +60,9 @@ namespace DevIO.Api.Configuration
                 //app.UseCors("Production");
                 app.UseHsts(); //informa ao browser que a aplicação so aceita Https
             }
-
+            
+            app.UseMiddleware<ExceptionMiddleware>();
+            
             app.UseHttpsRedirection(); //redireciona para https
             app.UseAuthentication();
             app.UseAuthorization();
