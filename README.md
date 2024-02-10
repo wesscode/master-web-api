@@ -14,3 +14,6 @@
     - HeathChecks
     - Application Insights(azure)
 
+Elmah.io:
+    - Ferramenta de terceiro que configuramos na aplicação aspnet para emitir log em nivel de midleware(exceptions). Com o pacote **Elmah.Io.Extensions.Logging** conseguimos configura-lo para ser um provider do aspnet, conseguindo emitir qualquer log(ILogger).
+

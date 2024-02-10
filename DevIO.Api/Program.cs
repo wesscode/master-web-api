@@ -23,6 +23,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddApiConfig();
 
 builder.Services.AddSwaggerConfig();
+builder.Services.AddLoggingConfiguration();
 
 builder.Services.ResolveDependencies();
 
@@ -34,6 +35,8 @@ var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionD
 app.UseApiConfig(app.Environment);
 
 app.UseSwaggerConfig(apiVersionDescriptionProvider);
+
+app.UseLoggingConfiguration();
 
 app.MapControllers();
 
